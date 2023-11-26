@@ -44,6 +44,6 @@ Vous pouvez également vous inscrire à notre newsletter mensuelle présentant l
 
 |                                                                      |                                                                         |                                                                             |
 | -------------------------------------------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| **Président**<br>Afaf ELAKEHAL<br>*MIAGE d'origine : Orsay*<br>      | **Trésorier**<br>Fabien MICHEL<br>*MIAGE d'origine : Nanterre*          | **Secrétaire**<br>Jules SPEICH<br>*MIAGE d'origine : Nancy*                 |
-| **Pôle Événementiel**<br>Maïki FERREIRA<br>*MIAGE d'origine : Orsay* | **Pôle Événementiel**<br>Julien MORASIN<br>*MIAGE d'origine : Sorbonne* | **Pôle Événementiel**<br>Anthony NASCIMENTO<br>*MIAGE d'origine : Nanterre* |
+| **Président**<br>Alexis DI LORETO<br>*MIAGE d'origine : Amiens*<br>      | **Trésorier**<br>Emmanuel MARTINS<br>*MIAGE d'origine : Nanterre*          | **Secrétaire**<br>Svetlnana STARYGINA<br>*MIAGE d'origine : Nanterre*                 |
+| **Pôle Événementiel**<br>Maïki FERREIRA<br>*MIAGE d'origine : Orsay* | **Pôle Événementiel**<br>Mélissa BOURKEB<br>*MIAGE d'origine : Nanterre* | **Pôle Événementiel**<br>Anthony NASCIMENTO<br>*MIAGE d'origine : Nanterre* |
 | **Webmaster**<br>Jules SPEICH<br>*MIAGE d'origine : Nancy*           |                                                                         |                                                                             |
