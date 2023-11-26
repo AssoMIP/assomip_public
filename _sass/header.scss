@@ -1,0 +1,45 @@
+@import "bootstrap/variables";
+@import "bootstrap/functions";
+@import "bootstrap/mixins/breakpoints";
+
+header {
+  border-top: #111 3px solid;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/assets/img/header.jpg") right top;
+  display: flex;
+  align-items: center;
+  padding: 32px 16px;
+  @include media-breakpoint-down(sm) {
+    padding: 16px;
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+      text-decoration: none;
+  }
+
+  h1 {
+    font-family: "Oswald", sans-serif;
+  }
+}
+
+  .logo {
+    margin: 32px;
+    @include media-breakpoint-down(sm) {
+      margin: 16px;
+      img {
+        width: 15vw;
+    }
+  }
+}
+
+  .heading-title {
+    margin: 32px;
+    @include media-breakpoint-down(sm) {
+      margin: 16px;
+  }
+}
+}

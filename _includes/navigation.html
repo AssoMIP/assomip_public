@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {% comment %} Les pages sont ordonnancées par leur valeur priority. Les valeurs les plus hautes seront affichées en premier {% endcomment %}
+      {% assign _pages_by_priority = site.pages | sort: "priority" | reverse %}
+      {% assign about_pages_by_priority = site.about | sort: "priority" | reverse %}
+      {% for _page in _pages_by_priority %}
+      {% unless _page.slug == 'a-propos-mip' %}
+      <li class="nav-item {% if page.url == _page.url %}active{% endif %}">
+        <a class="nav-link" href="{{ _page.url }}">
+          {{ _page.title }}
+          {% if page.url == _page.url %}
+          <span class="sr-only">(current)</span>
+          {% endif %}</a>
+      </li>
+      {% endunless %}
+      {% if _page.slug == 'a-propos-mip' %}
+      <li class="nav-item dropdown {% if page.url contains "/a-propos-mip"%}active{% endif %}">
+        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown"
+           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ _page.title }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="aboutDropdown">
+          <a class="dropdown-item" href="{{ _page.url }}">{{ _page.title }}</a>
+          <div class="dropdown-divider"></div>
+          {% for about_page in about_pages_by_priority %}
+          <a class="dropdown-item" href="{{ about_page.url }}">{{ about_page.title }}</a>
+          {% endfor %}
+        </div>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    {% include search.html %}
+  </div>
+</nav>

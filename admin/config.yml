@@ -1,0 +1,88 @@
+backend:
+  name: github
+  repo: AssoMIP/assomip.fr
+locale: 'fr'
+media_folder: "assets/uploads"
+publish_mode: editorial_workflow
+site_url: https://assomip.fr
+logo_url: /assets/img/logo.png
+slug:
+  encoding: "ascii"
+  clean_accents: true
+collections:
+  - name: "articles" # Used in routes, e.g., /admin/collections/blog
+    label: "Articles" # Used in the UI
+    folder: "_posts/" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    preview_path: "{{title}}"
+    fields: # The fields for each document, usually in front matter
+      - {label: "Layout", name: "layout", widget: "hidden", default: "posts"}
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Date de publication", name: "date", widget: "datetime"}
+      - {
+          label: "Catégories",
+          name: "categories",
+          widget: "relation",
+          collection: "categories",
+          displayFields: ["title"],
+          searchFields: ["title"],
+          valueField: "category",
+          multiple: true,
+          default: ["Evènements"]
+        }
+      - {label: "Corps", name: "body", widget: "markdown"}
+      - {label: "Date et heure et l'évenement", name: "eventdate", widget: "datetime", required: false}
+      - {label: "Informations sur l'évenement", name: "eventcard", widget: "event-card", required: false}
+    sortableFields: ['date', 'title']
+  - name: "categories"
+    label: "Catégories"
+    folder: "_category"
+    create: true
+    editor:
+      preview: false
+    slug: "{{title}}"
+    preview_path: "category/{{slug}}"
+    fields:
+      - {label: "Titre", name: "title", "widget": "string"}
+      - {label: "Nom", name: "category", "widget": "string"}
+  - name: "pages"
+    label: "Pages"
+    folder: "_pages/"
+    create: true
+    slug: "{{title}}"
+    preview_path: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "pages"}
+      - {label: "Titre", name: "title", widget: "string"}
+      - {
+        label: "Priorité",
+        hint: "Les pages avec la valeur la plus élevée seront affichées en premier dans le menu",
+        name: "priority",
+        widget: "number",
+        valueType: "int",
+        min: 0,
+        max: 9,
+        default: 0
+      }
+      - {label: "Corps", name: "body", widget: "markdown"}
+  - name: "about"
+    label: "À Propos"
+    folder: "_about/"
+    create: true
+    slug: "{{title}}"
+    preview_path: "a-propos-mip/{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "pages"}
+      - {label: "Titre", name: "title", widget: "string"}
+      - {
+        label: "Priorité",
+        hint: "Les pages avec la valeur la plus élevée seront affichées en premier dans le menu",
+        name: "priority",
+        widget: "number",
+        valueType: "int",
+        min: 0,
+        max: 9,
+        default: 0
+      }
+      - {label: "Corps", name: "body", widget: "markdown"}

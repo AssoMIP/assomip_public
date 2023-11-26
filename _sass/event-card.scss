@@ -1,0 +1,46 @@
+.event-card {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+
+  .event-date {
+    .date-day {
+      font-size: 70px;
+      line-height: 70px;
+      color: #cc0033;
+    }
+    .date-month {
+      font-size: 30px;
+      line-height: 30px;
+      color: #333333;
+      padding-bottom: 8px;
+    }
+    .date-time {
+      font-size: 15px;
+    }
+  }
+
+  .event-info {
+    font-size: 15px;
+    .place-name {
+      font-weight: 600;
+    }
+    .place-address {
+      font-style: italic;
+    }
+    .citymapper-link {
+      display: block;
+      margin-top: 8px;
+    }
+  }
+
+  .event-stations {
+    .station-item {
+      padding: 4px 0;
+    }
+
+    font-size: 16px;
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+  }
+}

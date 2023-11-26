@@ -1,0 +1,44 @@
+<form name="{{ include.name }}"
+      method="POST"
+      action="/contact-success"
+      netlify-honeypot="website"
+      data-netlify="true"
+      data-netlify-recaptcha="true">
+    {% comment %}
+    Ce champ est un "honeypot": un bot simpliste va très certainement le remplir ce champ et dévoiler ainsi sa vraie nature
+    {% endcomment %}
+    <p class="d-none">
+        <label>Don’t fill this out if you're human: <input name="website" /></label>
+    </p>
+    <div class="form-group">
+        <label for="{{ '-name' | prepend: include.name}}">Votre nom</label>
+        <input type="text"
+               name="name"
+               class="form-control"
+               id="{{ '-name' | prepend: include.name}}">
+    </div>
+    <div class="form-group">
+        <label for="{{ '-email' | prepend: include.name}}">Votre adresse de messagerie</label>
+        <input type="email"
+               name="email"
+               class="form-control"
+               placeholder="name@example.com"
+               id="{{ '-email' | prepend: include.name}}">
+    </div>
+    <div class="form-group">
+        <label for="{{ '-subject' | prepend: include.name}}">Objet</label>
+        <input type="text"
+               name="subject"
+               class="form-control"
+               id="{{ '-subject' | prepend: include.name}}">
+    </div>
+    <div class="form-group">
+        <label for="{{ '-content' | prepend: include.name}}">Votre message</label>
+        <textarea name="content"
+                  class="form-control"
+                  id="{{ '-content' | prepend: include.name}}"
+                  rows="3"></textarea>
+    </div>
+    <div data-netlify-recaptcha="true"></div>
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+</form>

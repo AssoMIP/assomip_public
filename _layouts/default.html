@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{{ page.title }}</title>
+
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
+    <!-- Open Graph (SEO & link preview on Facebook, Twitter, LinkedIn, Slack, etc.) -->
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | prepend: site.url }}">
+    <meta property="og:image" content="{{ '/assets/favicon/favicon-600.png' | prepend: site.url }}">
+    {% if page.excerpt %}
+    <meta name="description" content="{{ page.content | strip_html | truncatewords: 75 }}">
+    <meta property="og:description" content="{{ page.content | strip_html | truncatewords: 75 }}">
+    {% elsif page.description %}
+    <meta name="description" content="{{ page.description }}">
+    <meta property="og:description" content="{{ page.description }}">
+    {% endif %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@AssoMIP">
+
+    <link rel="alternate" type="application/rss+xml"  href="{{ 'feed' | prepend: site.url }}" title="{{ site.title }}">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/favicon/favicon-64.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96.png" />
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/favicon/favicon-180.png" />
+
+    {% if jekyll.environment == "production" %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-18366281-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-18366281-1');
+    </script>
+    {% endif %}
+</head>
+<body>
+<div class="container main-container">
+    {% include header.html %}
+    {% include navigation.html %}
+    <div class="content-container">
+    {{ content }}
+    </div>
+    {% include footer.html %}
+</div>
+
+<script src="https://unpkg.com/simple-jekyll-search/dest/simple-jekyll-search.min.js"></script>
+<script>
+    var sjs = SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/search.json',
+        searchResultTemplate: '<a class="list-group-item list-group-item-action" href="{{ site.url }}{url}">{title}</a>'
+    })
+</script>
+</body>
+</html>

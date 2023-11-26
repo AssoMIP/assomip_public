@@ -1,0 +1,77 @@
+@import "bootstrap/variables";
+
+.article-title {
+  margin-bottom: 16px;
+
+  h1 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+  }
+  a {
+    color: $body-color;
+    &:hover {
+      color: #21759B;
+      text-decoration: none;
+    }
+  }
+
+  .article-date {
+    float: left;
+    display: block;
+
+    padding: 8px 16px 8px 8px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-left: -53px;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+
+    background-color: $primary;
+    border-radius: 0 5px 5px 0;
+    border-style: solid;
+    border-width: $card-border-width $card-border-width $card-border-width 0;
+    border-color: $card-border-color;
+  }
+}
+
+.article-body {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.accordion {
+  margin-bottom: 30px;
+  &> .card {
+    margin: 0;
+  }
+  .card-header {
+    padding: 0 .5rem;
+  }
+}
+
+/* Wordpress picture tags */
+.aligncenter {
+  display:block;
+  margin:20px auto;
+}
+
+.alignleft {
+  float:left;
+  margin:10px 20px 10px 0;
+}
+
+.alignright {
+  float:right;
+  margin:10px 0 10px 20px;
+}
+
+/* Stations des posts existants */
+td > h5 {
+  font-size: 16px;
+  font-family: "Oswald", sans-serif;
+  font-weight: 300;
+}

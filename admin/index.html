@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+    <style>
+        span[class*="CustomIconWrapper"] {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Custom Widgets -->
+<script src="/admin/js/runtime-es2015.js" type="module"></script>
+<script src="/admin/js/runtime-es5.js" nomodule defer></script>
+<script src="/admin/js/polyfills-es5.js" nomodule defer></script>
+<script src="/admin/js/polyfills-es2015.js" type="module"></script>
+<script src="/admin/js/main-es2015.js" type="module"></script>
+<script src="/admin/js/main-es5.js" nomodule defer></script>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<!-- Include the script that builds the page and powers Netlify CMS -->
+<script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+
+<!-- Initialisation des widgets personnalisés -->
+<script>
+    // Informations sur l'événement
+    const EventCardControl = createClass({
+        handleChange: function(e) {
+            this.props.onChange(e.detail);
+        },
+
+        componentDidMount() {
+            const comp = document.querySelector('event-card');
+            comp.addEventListener("update", this.handleChange);
+        },
+
+        render: function() {
+            const value = this.props.value;
+            return h('event-card', { state: value });
+        }
+    });
+
+    const EventCardPreview = createClass({
+        render: function() {
+            const value = this.props.value;
+            return h('event-card-preview', { input: value });
+        }
+    })
+
+    CMS.registerWidget('event-card', EventCardControl, EventCardPreview);
+
+    CMS.registerEditorComponent({
+        // ID interne
+        id: "tabs",
+        label: "Groupe d'onglets",
+
+        fields: [
+            {
+                name: 'content',
+                label: 'Contenu',
+                widget: 'markdown',
+                buttons: [],
+                editorComponents: [ 'tab' ]
+            }
+        ],
+        // Pattern to identify a block as being an instance of this component
+        pattern: /\[tabs[^\]]*\]((.|\n)*)\[\/tabs[^\]]*\]/,
+        // Function to extract data elements from the regexp match
+        fromBlock: function(match) {
+            return {
+                content: match[1]
+            }
+        },
+        // Function to create a text block from an instance of this component
+        toBlock: function(obj) {
+            return '[tabs]\n\n' + obj.content + "\n\n[/tabs]";
+        },
+        // Preview output for this component
+        toPreview: function(obj) {
+            return (
+                marked('[tabs]\n\n' + obj.content + '\n\n[/tabs]')
+            );
+        }
+    });
+
+    CMS.registerEditorComponent({
+        // ID interne
+        id: "tab",
+        label: "Onglet",
+
+        fields: [
+            {name: 'title', label: 'Titre', widget: 'string'},
+            {name: 'content', label: 'Contenu', widget: 'markdown'}
+        ],
+        // Pattern to identify a block as being an instance of this component
+        pattern: /\[tab title="([^\]]*)"\]((\n|[^\[])*)\[\/tab[^s\]]*\]/,
+        // Function to extract data elements from the regexp match
+        fromBlock: function(match) {
+            return {
+                title: match[1],
+                content: match[2]
+            }
+        },
+        // Function to create a text block from an instance of this component
+        toBlock: function(obj) {
+            return '[tab title=\"' + obj.title + '\"]\n\n' + obj.content + "\n\n[/tab]";
+        },
+        // Preview output for this component
+        toPreview: function(obj) {
+            return (
+                 marked(obj.content)
+            );
+        }
+    });
+</script>
+</body>
+</html>

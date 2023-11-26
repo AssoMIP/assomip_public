@@ -1,0 +1,21 @@
+@import "bootstrap/mixins/breakpoints";
+
+.search {
+  position: relative;
+  @include media-breakpoint-down(sm) {
+    padding: 16px 0;
+    #search-input {
+      width: 100%;
+    }
+  }
+  #search-input {
+    opacity: 0.8;
+    background-color: white;
+  }
+}
+
+#results-container {
+  position: absolute;
+  z-index: 100;
+  top: 110%;
+}

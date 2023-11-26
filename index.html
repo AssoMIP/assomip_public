@@ -1,0 +1,32 @@
+---
+layout: default
+title: "MIP : Miagistes Importés à Paname"
+pagination:
+    enabled: true
+---
+{% for post in paginator.posts %}
+{% include article.html title=post.title content=post.content url=post.url date=post.date categories=post.categories event=post.eventcard eventdate=post.eventdate %}
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col col-sm-6">
+                {% if paginator.previous_page %}
+                <a href="{{ paginator.previous_page_path }}">
+                    &larr; Articles plus récents
+                </a>
+                {% endif %}
+            </div>
+            <div class="col col-sm-6 text-right">
+                {% if paginator.next_page %}
+                <a href="{{ paginator.next_page_path }}">
+                    Articles plus anciens &rarr;
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

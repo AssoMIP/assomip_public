@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-body">
+
+    <div class="article-title">
+      {% if include.date %}
+      <div class="article-date">
+        {{ include.date | date_to_string }}
+      </div>
+      {% endif %}
+      {% if include.url %}
+      <a href="{{ include.url }}">
+        <h1>{{ include.title }}</h1>
+      </a>
+      {% else %}
+      <h1>{{ include.title }}</h1>
+      {% endif %}
+    </div>
+
+    <div class="article-body">
+      {{ include.content }}
+    </div>
+
+    {% if include.event and include.eventdate %}
+    {% include event-card.html event=include.event date=include.eventdate %}
+    {% endif %}
+  </div>
+
+  {% if include.categories %}
+  <div class="card-footer text-muted">
+    Dans :
+    {% for cat in include.categories %}
+      {% assign category = site.category | where: 'category', cat | first %}
+      <a class="category-item" href="{{ category.url | remove: 'index.html' }}">{{ category.title }}</a>
+    {% unless forloop.last %}&nbsp;&bull;&nbsp;{% endunless %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>

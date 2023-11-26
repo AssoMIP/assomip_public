@@ -1,0 +1,82 @@
+title: "MIP – Association des Miagistes Importés à Paname"
+url: https://assomip.fr
+timezone: Europe/Paris
+# Permalink des articles
+permalink: "/:title"
+# Pages
+collections:
+  pages:
+    output: true
+    permalink: "/:title"
+  about:
+    output: true
+    permalink: "/a-propos-mip/:title"
+  # Création des pages de catégories
+  category:
+    output: false
+# Valeurs par défaut des différents contenus
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: "posts"
+  - scope:
+      path: ""
+      type: category
+    values:
+      layout: "autopage_category"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+# Fichiers à exclure lors de la génération du site
+exclude:
+  - .idea/
+  - "*.iml"
+  - README.md
+  - "*/README.md"
+  - purgecss.config.js
+  - package.json
+  - package-lock.json
+plugins:
+  - jekyll-paginate-v2
+  - jekyll-responsive-image
+  - jekyll-purgecss
+# Pagination settings
+autopages:
+  enabled: true
+  categories:
+    layouts:
+      - "autopage_category.html"
+    title: ":cat"
+    slugify:
+      mode: "latin"
+      case: true
+    permalink: "/category/:cat/"
+  collections:
+    enabled: false
+  tags:
+    enabled: false
+pagination:
+  enabled: true
+  per_page: 5
+  permalink: "/page/:num/"
+  sort_reverse: true
+# Responsive image settings
+responsive_image:
+  template: _includes/responsive-image.html # Template par lequel sera remplacé les images
+  output_path_format: assets/uploads/%{width}/%{basename}
+  # Les navigateurs n'orientent pas toujours correctement les images d'après leur méta-données EXIF, nous le faisons donc avant.
+  auto_rotate: true
+  # Les tailles dans lesquelles les images seront redimensionnées. Correspond aux largeurs du container Bootstrap - 72px
+  sizes:
+    - width: 350
+    - width: 430
+    - width: 620
+    - width: 860
+    - width: 1100
+  # Inutile de sauvegarder les images redimensionnées dans les sources puisque Netlify ne les commitera jamais à la génération
+  save_to_source: false
+# PurgeCSS
+css_dir: "assets/css"

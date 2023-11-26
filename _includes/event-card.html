@@ -1,0 +1,33 @@
+<div class="d-flex flex-row flex-wrap align-items-center justify-content-center event-card">
+    <div class="p-2 event-date">
+        <div class="date-day">
+            {{ include.date | date: "%d" }}
+        </div>
+        <div class="date-month">
+            {{ include.date | date: "%B" | capitalize }}
+        </div>
+        <div class="date-time">
+            {{ include.date | date: "%kh%M" }}
+        </div>
+    </div>
+    <div class="p-2 flex-grow-1 event-info">
+        <div class="place-name">{{ include.event.placeName }}</div>
+        <div class="place-address">{{ include.event.placeAddress }}</div>
+        <a href="{{include.event.citymapperLink}}"
+           class="citymapper-link"
+           target="_blank">
+            <img src="https://static.citymapper.com/img/embed/GetMeThere_Citymapper.png"
+                 alt="Itininéraire avec Citymapper">
+        </a>
+    </div>
+    <div class="p-2 event-stations">
+        {% for station in include.event.stations %}
+        <div class="station-item">
+            {% for line in station.lines %}
+            <img src="{{line.icon}}" alt="{{line.name}}" width="21px" height="21px">
+            {% endfor %}
+            <span class="station-name">{{ station.name }}</span>
+        </div>
+        {% endfor %}
+    </div>
+</div>
