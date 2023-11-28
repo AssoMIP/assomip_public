@@ -5,7 +5,7 @@ backend:
 locale: 'fr'
 media_folder: "assets/uploads"
 publish_mode: editorial_workflow
-site_url: https://assomip.fr
+site_url: assomip.github.io
 logo_url: /assets/img/logo.png
 slug:
   encoding: "ascii"
