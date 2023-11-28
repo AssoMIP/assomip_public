@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: AssoMIP/assomip.fr
+  repo: AssoMIP/assomip.github.io
 locale: 'fr'
 media_folder: "assets/uploads"
 publish_mode: editorial_workflow
