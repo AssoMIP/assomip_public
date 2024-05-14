@@ -1,10 +1,17 @@
 title: "MIP – Association des Miagistes Importés à Paname"
 url: https://assomip.fr
 timezone: Europe/Paris
+
+source: .
+destination: ./_site
+
 # Permalink des articles
 permalink: "/:title"
 # Pages
 collections:
+  articles:
+    output: true
+    permalink: /:categories/:title/
   pages:
     output: true
     permalink: "/:title"
