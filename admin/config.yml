@@ -1,89 +1,67 @@
 backend:
   name: github
+  branch: master # Branch to update (master by default)
   repo: AssoMIP/assomip.github.io
-  site_domain: assomip.fr
-locale: 'fr'
-media_folder: "assets/uploads"
+site_domain: assomip.fr
+media_folder: "assets/uploads" # Folder where user uploaded files should go
 publish_mode: editorial_workflow
 site_url: assomip.fr
 logo_url: /assets/img/logo.png
-slug:
-  encoding: "ascii"
-  clean_accents: true
-collections:
-  - name: "articles" # Used in routes, e.g., /admin/collections/blog
-    label: "Articles" # Used in the UI
-    folder: "/_posts/" # The path to the folder where the documents are stored
+
+collections: # A list of collections the CMS should be able to edit
+  - name: "articles" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Article" # Used in the UI, ie.: "New Post"
+    folder: "_posts" # The path to the folder where the documents are stored
+    sort: "date:desc" # Default is title:asc
     create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    preview_path: "{{title}}"
-    fields: # The fields for each document, usually in front matter
-      - {label: "Layout", name: "layout", widget: "hidden", default: "posts"}
-      - {label: "Titre", name: "title", widget: "string"}
-      - {label: "Date de publication", name: "date", widget: "datetime"}
-      - {
-          label: "Catégories",
-          name: "categories",
-          widget: "relation",
-          collection: "categories",
-          display_Fields: ["title"],
-          search_Fields: ["title"],
-          value_Field: "category",
-          multiple: true,
-          default: ["Evènements"]
-        }
-      - {label: "Corps", name: "body", widget: "markdown"}
-      - {label: "Date et heure et l'évenement", name: "eventdate", widget: "datetime", required: false}
-      - {label: "Informations sur l'évenement", name: "eventcard", widget: "event-card", required: false}
-    sortable_Fields: ['date', 'title']
-  - name: "categories"
-    label: "Catégories"
-    folder: "_category"
-    create: true
-    editor:
-      preview: false
-    slug: "{{title}}"
-    preview_path: "category/{{slug}}"
-    fields:
-      - {label: "Titre", name: "title", "widget": "string"}
-      - {label: "Nom", name: "category", "widget": "string"}
-  - name: "pages"
-    label: "Pages"
-    folder: "_pages/"
-    create: true
-    slug: "{{title}}"
-    preview_path: "{{slug}}"
-    fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "pages"}
-      - {label: "Titre", name: "title", widget: "string"}
-      - {
-        label: "Priorité",
-        hint: "Les pages avec la valeur la plus élevée seront affichées en premier dans le menu",
-        name: "priority",
-        widget: "number",
-        valueType: "int",
-        min: 0,
-        max: 9,
-        default: 0
-      }
-      - {label: "Corps", name: "body", widget: "markdown"}
-  - name: "about"
-    label: "À Propos"
-    folder: "_about/"
-    create: true
-    slug: "{{title}}"
-    preview_path: "a-propos-mip/{{slug}}"
-    fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "pages"}
-      - {label: "Titre", name: "title", widget: "string"}
-      - {
-        label: "Priorité",
-        hint: "Les pages avec la valeur la plus élevée seront affichées en premier dans le menu",
-        name: "priority",
-        widget: "number",
-        valueType: "int",
-        min: 0,
-        max: 9,
-        default: 0
-      }
-      - {label: "Corps", name: "body", widget: "markdown"}
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields: # The fields each document in this collection have
+      - {label: "Layout", name: "layout", widget: "hidden", default: "article"}
+      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Categories", name: "categories", widget: "string", required: false}
+    meta: # Meta data fields. Just like fields, but without any preview element
+      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD hh:mm:ss"}
+
+  - name: "categories" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Category" # Used in the UI, ie.: "New Post"
+    folder: "_category" # The path to the folder where the documents are stored
+    sort: "date:desc" # Default is title:asc
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields: # The fields each document in this collection have
+      - {label: "Layout", name: "layout", widget: "hidden", default: "category"}
+      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Categories", name: "categories", widget: "string", required: false}
+    meta: # Meta data fields. Just like fields, but without any preview element
+      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD hh:mm:ss"}
+
+
+  - name: "pages" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Page" # Used in the UI, ie.: "New Post"
+    folder: "_pages" # The path to the folder where the documents are stored
+    sort: "date:desc" # Default is title:asc
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields: # The fields each document in this collection have
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Categories", name: "categories", widget: "string", required: false}
+    meta: # Meta data fields. Just like fields, but without any preview element
+      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD hh:mm:ss"}
+
+ - name: "about" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "About" # Used in the UI, ie.: "New Post"
+    folder: "_about" # The path to the folder where the documents are stored
+    sort: "date:desc" # Default is title:asc
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields: # The fields each document in this collection have
+      - {label: "Layout", name: "layout", widget: "hidden", default: "about"}
+      - {label: "Title", name: "title", widget: "string", tagname: "h1"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Categories", name: "categories", widget: "string", required: false}
+    meta: # Meta data fields. Just like fields, but without any preview element
+      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD hh:mm:ss"}
