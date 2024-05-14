@@ -11,6 +11,7 @@ permalink: "/:title"
 collections:
   articles:
     output: true
+    output_dir: "_posts"
     permalink: /:categories/:title/
   pages:
     output: true
