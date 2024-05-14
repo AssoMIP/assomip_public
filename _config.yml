@@ -17,7 +17,7 @@ collections:
 # Valeurs par défaut des différents contenus
 defaults:
   - scope:
-      path: ""
+      path: "_post/"
       type: posts
     values:
       layout: "posts"
