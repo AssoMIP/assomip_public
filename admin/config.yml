@@ -1,11 +1,11 @@
 backend:
   name: github
   repo: AssoMIP/assomip.github.io
-  site_domain: assomip.github.io
+  site_domain: assomip.fr
 locale: 'fr'
 media_folder: "assets/uploads"
 publish_mode: editorial_workflow
-site_url: assomip.github.io
+site_url: assomip.fr
 logo_url: /assets/img/logo.png
 slug:
   encoding: "ascii"
