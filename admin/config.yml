@@ -26,16 +26,16 @@ collections:
           name: "categories",
           widget: "relation",
           collection: "categories",
-          displayFields: ["title"],
-          searchFields: ["title"],
-          valueField: "category",
+          display_Fields: ["title"],
+          search_Fields: ["title"],
+          value_Field: "category",
           multiple: true,
           default: ["Evènements"]
         }
       - {label: "Corps", name: "body", widget: "markdown"}
       - {label: "Date et heure et l'évenement", name: "eventdate", widget: "datetime", required: false}
       - {label: "Informations sur l'évenement", name: "eventcard", widget: "event-card", required: false}
-    sortableFields: ['date', 'title']
+    sortable_Fields: ['date', 'title']
   - name: "categories"
     label: "Catégories"
     folder: "_category"
