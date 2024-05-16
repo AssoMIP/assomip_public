@@ -40,11 +40,7 @@ Vous pouvez également vous inscrire à notre newsletter mensuelle présentant l
 
 ## Le bureau, c’est qui ?
 
-
-
 {:.table}
-
-
 
 | \     |
 | ----- |
