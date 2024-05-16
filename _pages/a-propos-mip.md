@@ -40,11 +40,6 @@ Vous pouvez également vous inscrire à notre newsletter mensuelle présentant l
 
 ## Le bureau, c’est qui ?
 
-{:.table}
-
-| \     |
-| ----- |
-
 | **Président**<br>Alexis DI LORETO<br>*MIAGE d'origine : Amiens*<br>       | **Trésorier**<br>Emmanuel MARTINS<br>*MIAGE d'origine : Nanterre*        | **Secrétaire**<br>Anthony NASCIMENTO<br>*MIAGE d'origine : Nanterre*  |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------- |
 | **Pôle Événementiel**<br>Maïki FERREIRA<br>*MIAGE d'origine : Orsay*      | **Pôle Événementiel**<br>Mélissa BOURKEB<br>*MIAGE d'origine : Nanterre* | **Pôle Événementiel**<br>Ahmed BOUKERRAM<br>*MIAGE d'origine : Orsay* |
